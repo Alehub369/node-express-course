@@ -1,12 +1,13 @@
-const express = require('express');
-const app = express();
-const tasks = require('./routes/tasks');
-const connectDB = require('./db/connect');
-require('dotenv').config();
-const notFound = require('./middleware/not-found');
-const errorHandlerMiddleware = require('./middleware/error-handler');
+import express from "express"
+import tasks from "./routes/tasks.js";
+import connectDB from "./db/connect.js";
+import dotenv  from "dotenv";
+dotenv.config()
+import notFound from "./middleware/not-found.js";
+import errorHandlerMiddleware from "./middleware/error-handler.js";
 
-connectDB().catch(console.dir);
+const app = express();
+const port = process.env.port || 3000
 
 // middleware
 
@@ -19,7 +20,8 @@ app.use('/api/v1/tasks', tasks);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
-const port = 4000
+connectDB().catch(console.dir);
+
 app.listen(port, ()=>{
   console.log(`server is listening on port ${port}...`);
 } )

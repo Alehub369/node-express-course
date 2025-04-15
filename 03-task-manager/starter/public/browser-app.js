@@ -1,8 +1,13 @@
+// import axios from 'axios';
+// const axios = require('axios');
+
 const tasksDOM = document.querySelector('.tasks')
 const loadingDOM = document.querySelector('.loading-text')
 const formDOM = document.querySelector('.task-form')
 const taskInputDOM = document.querySelector('.task-input')
 const formAlertDOM = document.querySelector('.form-alert')
+
+
 // Load tasks from /api/tasks
 const showTasks = async () => {
   loadingDOM.style.visibility = 'visible'
@@ -83,5 +88,5 @@ formDOM.addEventListener('submit', async (e) => {
   setTimeout(() => {
     formAlertDOM.style.display = 'none'
     formAlertDOM.classList.remove('text-success')
-  }, 3000)
+  }, 5500)
 })
